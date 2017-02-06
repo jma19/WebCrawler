@@ -2,9 +2,10 @@ import logging
 from datamodel.search.datamodel import ProducedLink, OneUnProcessedGroup, robot_manager
 from spacetime_local.IApplication import IApplication
 from spacetime_local.declarations import Producer, GetterSetter, Getter
-from lxml import html,etree
+from lxml import html, etree
 import re, os
 from time import time
+import requests
 
 try:
     # For python 2
@@ -13,7 +14,6 @@ except ImportError:
     # For python 3
     from urllib.parse import urlparse, parse_qs
 
-
 logger = logging.getLogger(__name__)
 LOG_HEADER = "[CRAWLER]"
 url_count = 0 if not os.path.exists("successful_urls.txt") else (len(open("successful_urls.txt").readlines()) - 1)
@@ -21,10 +21,10 @@ if url_count < 0:
     url_count = 0
 MAX_LINKS_TO_DOWNLOAD = 3000
 
+
 @Producer(ProducedLink)
 @GetterSetter(OneUnProcessedGroup)
 class CrawlerFrame(IApplication):
-
     def __init__(self, frame):
         self.starttime = time()
         # Set app_id <student_id1>_<student_id2>...
@@ -32,10 +32,10 @@ class CrawlerFrame(IApplication):
         # Set user agent string to IR W17 UnderGrad <student_id1>, <student_id2> ...
         # If Graduate studetn, change the UnderGrad part to Grad.
         self.UserAgentString = "IR W17 Grad 29846938"
-		
+
         self.frame = frame
-        assert(self.UserAgentString != None)
-        assert(self.app_id != "")
+        assert (self.UserAgentString != None)
+        assert (self.app_id != "")
         if url_count >= MAX_LINKS_TO_DOWNLOAD:
             self.done = True
 
@@ -60,11 +60,13 @@ class CrawlerFrame(IApplication):
         print "downloaded ", url_count, " in ", time() - self.starttime, " seconds."
         pass
 
+
 def save_count(urls):
     global url_count
     url_count += len(urls)
     with open("successful_urls.txt", "a") as surls:
         surls.write("\n".join(urls) + "\n")
+
 
 def process_url_group(group, useragentstr):
     rawDatas, successfull_urls = group.download(useragentstr, is_valid)
@@ -73,17 +75,20 @@ def process_url_group(group, useragentstr):
     save_extract_links(links)
     return links
 
+
 def save_extract_links(urls):
     global url_count
     url_count += len(urls)
     with open("successful_extracts.txt", "a") as surls:
         surls.write("\n".join(urls) + "\n")
 
-    
+
 #######################################################################################
 '''
 STUB FUNCTIONS TO BE FILLED OUT BY THE STUDENT.
 '''
+
+
 def extract_next_links(rawDatas):
     '''
        rawDatas is a list of tuples -> [(url1, raw_content1), (url2, raw_content2), ....]
@@ -104,6 +109,7 @@ def extract_next_links(rawDatas):
                 outputLinks.append(lnk[0])
     return outputLinks
 
+
 def is_valid(url):
     '''
     Function returns True or False based on whether the url has to be downloaded or not.
@@ -116,15 +122,20 @@ def is_valid(url):
     if parsed.hostname is "calendar.ics.uci.edu":
         return False
 
+    # link is not exists
+    head = requests.head(url)
+    if head.status_code != 200:
+        return False
+
     if parsed.scheme not in set(["http", "https"]):
         return False
     try:
         return ".ics.uci.edu" in parsed.hostname \
-            and not re.match(".*\.(css|js|bmp|gif|jpe?g|ico" + "|png|tiff?|mid|mp2|mp3|mp4"\
-            + "|wav|avi|mov|mpeg|ram|m4v|mkv|ogg|ogv|pdf" \
-            + "|ps|eps|tex|ppt|pptx|doc|docx|xls|xlsx|names|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso|epub|dll|cnf|tgz|sha1" \
-            + "|thmx|mso|arff|rtf|jar|csv"\
-            + "|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower())
+               and not re.match(".*\.(css|js|bmp|gif|jpe?g|ico" + "|png|tiff?|mid|mp2|mp3|mp4" \
+                                + "|wav|avi|mov|mpeg|ram|m4v|mkv|ogg|ogv|pdf" \
+                                + "|ps|eps|tex|ppt|pptx|doc|docx|xls|xlsx|names|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso|epub|dll|cnf|tgz|sha1" \
+                                + "|thmx|mso|arff|rtf|jar|csv" \
+                                + "|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower())
 
     except TypeError:
         print ("TypeError for ", parsed)
