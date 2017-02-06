@@ -21,6 +21,12 @@ if url_count < 0:
     url_count = 0
 MAX_LINKS_TO_DOWNLOAD = 3000
 
+# SKIPSITE ="^http://(ftp|fano|kdd|calendar|)\\.ics\\.uci\\.edu/.*"
+
+TRAP_POLL = {"calendar.ics.uci.edu", "drzaius.ics.uci.edu/cgi-bin/cvsweb.cgi/", "flamingo.ics.uci.edu/releases/"
+    , "fano.ics.uci.edu/ca/", "ironwood.ics.uci.edu", "djp3-pc2.ics.uci.edu/LUCICodeRepository/",
+             "archive.ics.uci.edu/ml", "www.ics.uci.edu/~xhx/project/MotifMap/"}
+
 
 @Producer(ProducedLink)
 @GetterSetter(OneUnProcessedGroup)
@@ -117,16 +123,18 @@ def is_valid(url):
 
     This is a great place to filter out crawler traps.
     '''
-    parsed = urlparse(url)
 
-    if parsed.hostname is "calendar.ics.uci.edu":
-        return False
+    # check trap
+    for trap in TRAP_POLL:
+        if url.__contains__(trap):
+            return False
 
     # link is not exists
     head = requests.head(url)
     if head.status_code != 200:
         return False
 
+    parsed = urlparse(url)
     if parsed.scheme not in set(["http", "https"]):
         return False
     try:
@@ -135,7 +143,9 @@ def is_valid(url):
                                 + "|wav|avi|mov|mpeg|ram|m4v|mkv|ogg|ogv|pdf" \
                                 + "|ps|eps|tex|ppt|pptx|doc|docx|xls|xlsx|names|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso|epub|dll|cnf|tgz|sha1" \
                                 + "|thmx|mso|arff|rtf|jar|csv" \
-                                + "|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower())
+                                + "|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower()) \
+               and not re.match(".*[\\?@=].*", parsed.path.lower)
+                # skip URLs containing certain characters as probable queries, etc.
 
     except TypeError:
         print ("TypeError for ", parsed)
