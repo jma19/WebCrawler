@@ -19,9 +19,8 @@ LOG_HEADER = "[CRAWLER]"
 url_count = 0 if not os.path.exists("successful_urls.txt") else (len(open("successful_urls.txt").readlines()) - 1)
 if url_count < 0:
     url_count = 0
-MAX_LINKS_TO_DOWNLOAD = 20
+MAX_LINKS_TO_DOWNLOAD = 3000
 
-visitedURL = set()
 @Producer(ProducedLink)
 @GetterSetter(OneUnProcessedGroup)
 class CrawlerFrame(IApplication):
@@ -70,7 +69,16 @@ def save_count(urls):
 def process_url_group(group, useragentstr):
     rawDatas, successfull_urls = group.download(useragentstr, is_valid)
     save_count(successfull_urls)
-    return extract_next_links(rawDatas)
+    links = extract_next_links(rawDatas)
+    save_extract_links(links)
+    return links
+
+def save_extract_links(urls):
+    global url_count
+    url_count += len(urls)
+    with open("successful_extracts.txt", "a") as surls:
+        surls.write("\n".join(urls) + "\n")
+
     
 #######################################################################################
 '''
@@ -94,9 +102,6 @@ def extract_next_links(rawDatas):
         for lnk in links:
             if is_valid(lnk[0]):
                 outputLinks.append(lnk[0])
-                print lnk[0]
-                print "\n"
-                visitedURL.add(lnk[0])
     return outputLinks
 
 def is_valid(url):
@@ -106,10 +111,11 @@ def is_valid(url):
 
     This is a great place to filter out crawler traps.
     '''
-    if visitedURL.__contains__(url):
+    parsed = urlparse(url)
+
+    if parsed.hostname is "calendar.ics.uci.edu":
         return False
 
-    parsed = urlparse(url)
     if parsed.scheme not in set(["http", "https"]):
         return False
     try:
