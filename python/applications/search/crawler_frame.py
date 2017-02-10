@@ -129,10 +129,11 @@ def is_valid(url):
         if url.__contains__(trap):
             return False
 
-    # link is not exists
+    # link is invalid
     head = requests.head(url)
     if head.status_code != 200:
         return False
+
 
     parsed = urlparse(url)
     if parsed.scheme not in set(["http", "https"]):
@@ -144,7 +145,7 @@ def is_valid(url):
                                 + "|ps|eps|tex|ppt|pptx|doc|docx|xls|xlsx|names|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso|epub|dll|cnf|tgz|sha1" \
                                 + "|thmx|mso|arff|rtf|jar|csv" \
                                 + "|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower()) \
-               and not re.match(".*[\\?@=].*", parsed.path.lower)
+               # and not re.match(".*[\\?@=].*", parsed.path.lower)
                 # skip URLs containing certain characters as probable queries, etc.
 
     except TypeError:
