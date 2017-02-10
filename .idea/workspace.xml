@@ -2,8 +2,50 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03ce307d-692a-4c17-9f8a-d070e1140d36" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/applications/search/crawler_frame.py" afterPath="$PROJECT_DIR$/python/applications/search/crawler_frame.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/python/applications/search/successful_urls.txt" afterPath="$PROJECT_DIR$/python/applications/search/successful_urls.txt" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/.gitattributes" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/.gitignore" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/.idea/dictionaries/junm5.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/.idea/python.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/Datamodel Documentation.pdf" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/StartServer.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/applications/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/applications/search/MyTest.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/applications/search/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/applications/search/crawler.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/applications/search/crawler_frame.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/applications/search/domain_count.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/applications/search/successful_extracts.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/applications/search/successful_urls.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/common/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/common/converter.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/common/instrument.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/common/javahttpadapter.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/common/modes.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/common/recursive_dictionary.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/common/util.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/common/wire_formats.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/datamodel/README.md" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/datamodel/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/datamodel/all.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/datamodel/search/Robot.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/datamodel/search/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/datamodel/search/datamodel.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/lib/pcc-0.0.14-py2-none-any.whl" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime/cache.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime/store.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime/store_server.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime_local/IApplication.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime_local/IFrame.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime_local/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime_local/declarations.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime_local/frame.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/python/spacetime_local/store.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/spacetime" afterPath="$PROJECT_DIR$/spacetime" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="WebCrawler.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,32 +69,42 @@
     <favorites_list name="WebCrawler" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spacetime/python/applications/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="crawler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python/applications/search/crawler.py">
+        <entry file="file://$PROJECT_DIR$/spacetime/python/applications/search/crawler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+            <state relative-caret-position="491">
+              <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="successful_urls.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python/applications/search/successful_urls.txt">
+      <file leaf-file-name="domain_count.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/spacetime/python/applications/search/domain_count.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="32" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="165">
+              <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="crawler_frame.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python/applications/search/crawler_frame.py">
+      <file leaf-file-name="crawler_frame.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/spacetime/python/applications/search/crawler_frame.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="481">
-              <caret line="113" column="18" selection-start-line="113" selection-start-column="18" selection-end-line="113" selection-end-column="18" />
+            <state relative-caret-position="285">
+              <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -61,30 +113,10 @@
         </entry>
       </file>
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python/applications/__init__.py">
+        <entry file="file://$PROJECT_DIR$/spacetime/python/applications/search/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MyTest.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/python/applications/search/MyTest.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="domain_count.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/python/applications/search/domain_count.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -100,6 +132,8 @@
       <list>
         <option value="$PROJECT_DIR$/python/applications/search/crawler_frame.py" />
         <option value="$PROJECT_DIR$/python/applications/search/successful_urls.txt" />
+        <option value="$PROJECT_DIR$/spacetime/python/applications/search/crawler_frame.py" />
+        <option value="$PROJECT_DIR$/spacetime/python/applications/search/crawler.py" />
       </list>
     </option>
   </component>
@@ -110,7 +144,6 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-39" />
     <option name="y" value="23" />
     <option name="width" value="1280" />
     <option name="height" value="731" />
@@ -140,7 +173,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -169,6 +202,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="spacetime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spacetime" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="python" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -180,6 +231,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WebCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spacetime" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -198,6 +253,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WebCrawler" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="spacetime" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -215,7 +274,7 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -345,6 +404,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.npm" factoryName="npm">
@@ -489,27 +554,27 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-39" y="23" width="1280" height="731" extended-state="0" />
+    <frame x="0" y="23" width="1280" height="731" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2536349" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1799687" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.40547946" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.35367763" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.1799687" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -528,7 +593,13 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/python/applications/__init__.py">
+    <entry file="file://$PROJECT_DIR$/python/applications/__init__.py" />
+    <entry file="file://$PROJECT_DIR$/python/applications/search/crawler.py" />
+    <entry file="file://$PROJECT_DIR$/python/applications/search/successful_urls.txt" />
+    <entry file="file://$PROJECT_DIR$/python/applications/search/MyTest.py" />
+    <entry file="file://$PROJECT_DIR$/python/applications/search/crawler_frame.py" />
+    <entry file="file://$PROJECT_DIR$/python/applications/search/domain_count.py" />
+    <entry file="file://$PROJECT_DIR$/spacetime/python/applications/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -536,23 +607,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/applications/search/crawler.py">
+    <entry file="file://$PROJECT_DIR$/spacetime/python/applications/search/domain_count.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="42" column="24" selection-start-line="42" selection-start-column="24" selection-end-line="42" selection-end-column="24" />
+        <state relative-caret-position="165">
+          <caret line="16" column="10" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/applications/search/successful_urls.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="32" selection-start-line="4" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/applications/search/MyTest.py">
+    <entry file="file://$PROJECT_DIR$/spacetime/python/applications/search/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -560,21 +623,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/python/applications/search/crawler_frame.py">
+    <entry file="file://$PROJECT_DIR$/spacetime/python/applications/search/crawler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="481">
-          <caret line="113" column="18" selection-start-line="113" selection-start-column="18" selection-end-line="113" selection-end-column="18" />
+        <state relative-caret-position="491">
+          <caret line="58" column="18" selection-start-line="58" selection-start-column="18" selection-end-line="58" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/spacetime/python/applications/search/crawler_frame.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="17" selection-start-line="19" selection-start-column="17" selection-end-line="19" selection-end-column="17" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/python/applications/search/domain_count.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
