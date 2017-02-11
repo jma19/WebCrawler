@@ -107,11 +107,14 @@ def extract_next_links(rawDatas):
     Suggested library: lxml
     '''
     # rawData is tupe
-    outputLinks = list()
     for ele in rawDatas:
-        page = ele[1]
-        links = re.findall('"((http|https)s?://.*?)"', page)
+        if ele.http_code != 200 or ele.error_message != None or ele.is_redirected:
+            ele.bad_url = True
+            continue
+        ele.bad_url = False
+        links = re.findall('"((http|https)s?://.*?)"', ele.content)
         for lnk in links:
+            ele.out_links.append(lnk[0]);
             if is_valid(lnk[0]):
                 outputLinks.append(lnk[0])
     return outputLinks
@@ -125,14 +128,14 @@ def is_valid(url):
     '''
 
     # check trap
-    for trap in TRAP_POLL:
-        if url.__contains__(trap):
-            return False
-
-    # link is not exists
-    head = requests.head(url)
-    if head.status_code != 200:
-        return False
+    # for trap in TRAP_POLL:
+    #     if url.__contains__(trap):
+    #         return False
+    #
+    # # link is not exists
+    # head = requests.head(url)
+    # if head.status_code != 200:
+    #     return False
 
     parsed = urlparse(url)
     if parsed.scheme not in set(["http", "https"]):
@@ -144,7 +147,7 @@ def is_valid(url):
             + "|ps|eps|tex|ppt|pptx|doc|docx|xls|xlsx|names|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso|epub|dll|cnf|tgz|sha1" \
             + "|thmx|mso|arff|rtf|jar|csv"\
             + "|rm|smil|wmv|swf|wma|zip|rar|gz)$", parsed.path.lower()) \
-            and not re.match(".*[\\?@=].*", parsed.path.lower)
+            # and not re.match(".*[\\?@=].*", parsed.path.lower)
 
     except TypeError:
-        print ("TypeError for ", parsed)
+        print ("TypeError xxx for ", parsed)

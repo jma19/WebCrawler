@@ -57,4 +57,4 @@ if __name__== "__main__":
     parser.add_argument('-p', '--port', type=int, help='Port used by the distributing server')
     args = parser.parse_args()
     SetupLoggers()
-    sim = Simulation("amazon.ics.uci.edu", 9000)
+    sim = Simulation("amazon.ics.uci.edu", 9100)
