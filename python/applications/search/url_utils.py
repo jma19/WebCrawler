@@ -3,6 +3,7 @@ from urlparse import urlparse
 
 from bs4 import BeautifulSoup
 
+
 def extractLinkFromPage(content, scheme, netloc, stack):
     res = list()
     temp = list(stack)
@@ -51,7 +52,7 @@ def getHtml(url):
     return html
 
 
-url = "http://www.ics.uci.edu/about/brenhall/ugrad/index.php"
+url = "http://www.ics.uci.edu/"
 html = getHtml(url)
 parsed = urlparse(url)
 page = extractLinkFromPage(html, parsed.scheme, parsed.netloc, getPathStack(parsed.path))
