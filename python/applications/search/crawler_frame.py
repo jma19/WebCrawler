@@ -26,6 +26,17 @@ MAX_LINKS_TO_DOWNLOAD = 3000
 TRAP_POLL = {"calendar.ics.uci.edu", "drzaius.ics.uci.edu/cgi-bin/cvsweb.cgi/", "flamingo.ics.uci.edu/releases/"
     , "fano.ics.uci.edu/ca/", "ironwood.ics.uci.edu", "djp3-pc2.ics.uci.edu/LUCICodeRepository/",
              "archive.ics.uci.edu/ml", "www.ics.uci.edu/~xhx/project/MotifMap/"}
+#
+#
+# http://calendar.ics.uci.edu
+# https://duttgroup.ics.uci.edu/
+# http://djp3-pc2.ics.uci.edu/LUCICodeRepository/
+# https://archive.ics.uci.edu/ml/datasets.html
+# http://drzaius.ics.uci.edu/cgi-bin/cvsweb.cgi/
+# http://flamingo.ics.uci.edu/releases/
+# http://fano.ics.uci.edu/ca/
+# http://ironwood.ics.uci.edu/
+# http:www.ics.uci.edu/~xhx/project/MotifMap/
 
 @Producer(ProducedLink)
 @GetterSetter(OneUnProcessedGroup)
@@ -112,12 +123,20 @@ def extract_next_links(rawDatas):
             ele.bad_url = True
             continue
         ele.bad_url = False
+        originUrl = ele.url
+
         links = re.findall('"((http|https)s?://.*?)"', ele.content)
+
         for lnk in links:
             ele.out_links.append(lnk[0]);
             if is_valid(lnk[0]):
                 outputLinks.append(lnk[0])
-    return outputLinks
+
+        return outputLinks
+
+def splitIntoAbs(url):
+    url.split("/..")
+
 
 def is_valid(url):
     '''
@@ -126,16 +145,16 @@ def is_valid(url):
 
     This is a great place to filter out crawler traps.
     '''
-
     # check trap
-    # for trap in TRAP_POLL:
-    #     if url.__contains__(trap):
-    #         return False
-    #
+    print "xxxxxxxxxxxxxxxx %s" % url
+    for trap in TRAP_POLL:
+        if url.__contains__(trap):
+            return False
+
     # # link is not exists
-    # head = requests.head(url)
-    # if head.status_code != 200:
-    #     return False
+    head = requests.head(url)
+    if head.status_code != 200:
+        return False
 
     parsed = urlparse(url)
     if parsed.scheme not in set(["http", "https"]):
