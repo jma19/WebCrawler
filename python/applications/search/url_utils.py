@@ -5,29 +5,24 @@ from bs4 import BeautifulSoup
 
 
 def extractLinkFromPage(content, scheme, netloc, stack, originURL):
-    res = list()
+    res = set()
     temp = list(stack)
     for link in BeautifulSoup(content, "lxml").findAll('a'):
         url = link.get('href')
         if url == None or url == '':
             continue
-        # remove the situation of xxx/about/about/about
-        if originURL.__contains__(url):
-            continue
-        # process relative path
         if url.startswith("http") or url.startswith("https"):
             url = url
+        # process relative path
         elif url.startswith("/") or url.startswith('../'):
             newUrl, stepBack = getRelPath(url, temp)
             absolutePath = getAbsolutePath(temp, stepBack, newUrl)
             url = scheme + "://" + netloc + absolutePath
-            res.append(url)
         elif url.startswith("mailto") or url == "#":
             continue
         else:
             url = scheme + "://" + netloc + "/" + url
-
-        res.append(url)
+        res.add(url)
 
     return res
 
