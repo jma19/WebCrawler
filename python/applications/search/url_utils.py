@@ -14,6 +14,8 @@ def extractLinkFromPage(content, scheme, netloc, stack):
         # process relative path
         if url.startswith("/") or url.startswith('../'):
             newUrl, stepBack = getRelPath(url)
+            print newUrl
+            print "stepBack : %s"% stepBack
             absolutePath = getAbsolutePath(temp, stepBack, newUrl)
             url = scheme + "://" + netloc + absolutePath
         res.append(url)
@@ -25,7 +27,7 @@ def getRelPath(url):
         return url, 0
     stepBack = (len(url) - len(url.replace('../', ''))) / 3
     newUrl = url.replace('../', '')
-    return stepBack, "/" + newUrl
+    return "/" + newUrl, stepBack
 
 
 def getPathStack(path):
@@ -39,7 +41,8 @@ def getPathStack(path):
 def getAbsolutePath(stack, backSteps, relPath):
     res = ""
     for i in range(backSteps):
-        stack.pop()
+        if not stack:
+            stack.pop()
 
     for ele in stack:
         res = res + "/" + ele
@@ -52,7 +55,7 @@ def getHtml(url):
     return html
 
 
-url = "http://www.ics.uci.edu/"
+url = "http://www.ics.uci.edu/about/brenhall/"
 html = getHtml(url)
 parsed = urlparse(url)
 page = extractLinkFromPage(html, parsed.scheme, parsed.netloc, getPathStack(parsed.path))
