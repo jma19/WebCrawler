@@ -24,7 +24,7 @@ url_count = (set()
 MAX_LINKS_TO_DOWNLOAD = 3000
 
 TRAP_POOL = {"calendar.ics.uci.edu", "drzaius.ics.uci.edu/cgi-bin/cvsweb.cgi/", "flamingo.ics.uci.edu/releases/"
-    , "fano.ics.uci.edu/ca/", "ironwood.ics.uci.edu", "djp3-pc2.ics.uci.edu/LUCICodeRepository/",
+    , "fano.ics.uci.edu/", "ironwood.ics.uci.edu", "djp3-pc2.ics.uci.edu/LUCICodeRepository/",
              "archive.ics.uci.edu/ml", "www.ics.uci.edu/~xhx/project/MotifMap/"}
 
 
@@ -126,7 +126,7 @@ def extract_next_links(rawDatas):
 
     # rawData is tupe
     for ele in rawDatas:
-        if ele.http_code != 200 or ele.error_message != None or ele.is_redirected:
+        if ele.http_code != 200 or (ele.error_message != None and ele.error_message != '') or ele.is_redirected:
             ele.bad_url = True
             continue
         ele.bad_url = False
@@ -136,14 +136,14 @@ def extract_next_links(rawDatas):
         # extractLinkFromPage()
         stack = url_utils.getPathStack(parse_result.path)
         links = url_utils.extractLinkFromPage(ele.content, parse_result.scheme, parse_result.netloc, stack, originUrl)
-        print "extract page get links:" % links
+        print "extract page get links size: %s" % len(links)
         for lnk in links:
-            ele.out_links.append(lnk)
+            ele.out_links.add(lnk)
             if is_valid(lnk):
                 print "----------- valid %s" % lnk
                 outputLinks.append(lnk)
 
-    print "return output links %s" % outputLinks
+    print "return output links %d" % len(outputLinks)
     return outputLinks
 
 
@@ -170,35 +170,42 @@ def is_valid(url):
         return False
 
     # filter out dynamatic request url
-    if path.__contains__('.php') and path.__contains__('?'):
+    if (path.__contains__('.php') and path.__contains__('?')) or (
+        path.__contains__('.php') and not path.endswith('.php')):
         return False
 
     if parsed.scheme not in set(["http", "https"]):
         return False
 
-    # # link is not exists
-    head = requests.head(url)
-    if head.status_code != 200:
-        return False
-
+    # only consider 200, and
+    # head = requests.head(url)
+    # if head.status_code != 200:
+    #     return False
+    # build frequency map for path to filter
+    # http://www.ics.uci.edu/prospective/en/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/%E2%80%8B
     try:
         return ".ics.uci.edu" in parsed.hostname \
                and not re.match(".*\.(css|js|bmp|gif|jpe?g|ico" + "|png|tiff?|mid|mp2|mp3|mp4" \
                                 + "|wav|avi|mov|mpeg|ram|m4v|mkv|ogg|ogv|pdf" \
                                 + "|ps|eps|tex|ppt|pptx|doc|docx|xls|xlsx|names|data|dat|exe|bz2|tar|msi|bin|7z|psd|dmg|iso|epub|dll|cnf|tgz|sha1" \
                                 + "|thmx|mso|arff|rtf|jar|csv" \
-                                + "|rm|smil|wmv|swf|wma|zip|rar|gz)$" \
-                                # new filter condition
-                                + "|war|au|apk|db|Z|java|c|py|lif|pov|bib|shar|txt",
+                                + "|rm|smil|wmv|swf|wma|zip|rar|gz" \
+                                  "|war|au|apk|db|Z|java|c|py|lif|pov|bib|shar|txt)$",
                                 parsed.path.lower()) \
             # and not re.match(".*[\\?@=].*", parsed.path.lower)
 
     except TypeError:
         print ("TypeError for ", parsed)
 
+        #
+        # test = set(['http://www.ics.uci.edu/ugrad/policies/Add_Drop_ChangeOption', 'http://www.ics.uci.edu/bin/pdf/grad/F16-17%20Graduate%20Student%20Handbook.pdf', 'http://www.ics.uci.edu/involved/leadership_council', 'http://www.ics.uci.edu/faculty/centers/', 'http://www.ics.uci.edu/community/alumni/', 'http://www.ics.uci.edu/prospective', 'http://www.webstandards.org/upgrade/', 'http://calendar.ics.uci.edu/calendar.php', 'http://www.ics.uci.edu/about/search/search_graduate_all.php', 'http://www.ics.uci.edu/ugrad/degrees/Minors', 'http://www.ics.uci.edu/community/events/competition/', 'http://www.ics.uci.edu/grad/courses/index', 'https://ucirvine-csm.symplicity.com/index.php/pid700104', 'http://www.uci.edu/', 'http://www.ics.uci.edu/about/brenhall/index.php', 'http://www.ics.uci.edu/ugrad/QA_Graduation', 'http://www.ics.uci.edu/ugrad/index', 'http://www.ics.uci.edu/faculty/highlights/', 'http://www.ics.uci.edu/ugrad/degrees/index.php', 'http://www.ics.uci.edu/community/scholarships/index', 'http://www.ics.uci.edu/grad/funding/index', 'http://www.ics.uci.edu/grad/index', 'http://www.ics.uci.edu/ugrad/', 'http://www.ics.uci.edu/grad/degrees/index', 'http://www.ics.uci.edu/about/about_deanmsg.php', 'http://www.ics.uci.edu/ugrad/policies/Laptop_ComputerUse', 'http://www.stat.uci.edu', 'http://www.ics.uci.edu/about/about_factsfigures.php', 'http://www.ics.uci.edu/grad/resources', 'http://www.ics.uci.edu/faculty/area/', 'http://www.ics.uci.edu/about/search/index.php', 'http://www.ics.uci.edu/computing/account/new', 'http://www.ics.uci.edu/ugrad/QA_Petitions', 'http://www.ics.uci.edu/ugrad/sao/index', 'http://www.ics.uci.edu/community/news/press/', 'http://www.ics.uci.edu/ugrad/policies/Academic_Standing', 'http://www.ics.uci.edu/grad/admissions/Prospective_ApplicationProcess.php', 'http://www.uci.edu/copyright.php', 'http://www.ics.uci.edu/ugrad/sao/SAO_Events.php', 'http://www.ics.uci.edu/about/visit/index.php', 'http://www.ics.uci.edu/involved/', 'http://www.ics.uci.edu/about/equity/', 'http://www.ics.uci.edu/', 'http://www.ics.uci.edu/dept/', 'http://www.ics.uci.edu/about/annualreport/', 'http://www.uci.edu/cgi-bin/phonebook', 'http://www.ics.uci.edu/grad/forms/index', 'http://www.cs.uci.edu', 'http://www.ics.uci.edu//', 'http://www.ics.uci.edu/community/news/', 'http://www.ics.uci.edu/ugrad/policies/Course_Outside_UCI', 'http://www.ics.uci.edu/ugrad/resources/index', 'http://www.ics.uci.edu/faculty/', 'http://www.ics.uci.edu/involved/corporate_partner', 'http://www.ics.uci.edu/about/visit/index', 'http://www.ics.uci.edu/grad/policies/index', 'http://www.ics.uci.edu/about/', 'http://www.ics.uci.edu/about/about_contact.php', 'http://www.informatics.uci.edu', 'http://www.ics.uci.edu/ugrad/policies/Academic_Integrity', 'http://www.uadv.uci.edu/DonaldBrenSchoolOfICSAnnualGiving', 'http://www.ics.uci.edu/ugrad/policies/Grade_Options', 'http://www.ics.uci.edu/ugrad/policies/Withdrawal_Readmission', 'http://intranet.ics.uci.edu/', 'http://www.ics.uci.edu/grad/admissions/index', 'http://www.ics.uci.edu/ugrad/courses/index', 'http://www.ics.uci.edu/involved/project_class'])
+        #
+        # for ele in test:
+        #     print is_valid(ele)
+        # u'http://www.ics.uci.edu/spring-2007/'
+        # u'http://www.ics.uci.edu/index.html'
 
-#
-# test = set(['http://www.ics.uci.edu/ugrad/policies/Add_Drop_ChangeOption', 'http://www.ics.uci.edu/bin/pdf/grad/F16-17%20Graduate%20Student%20Handbook.pdf', 'http://www.ics.uci.edu/involved/leadership_council', 'http://www.ics.uci.edu/faculty/centers/', 'http://www.ics.uci.edu/community/alumni/', 'http://www.ics.uci.edu/prospective', 'http://www.webstandards.org/upgrade/', 'http://calendar.ics.uci.edu/calendar.php', 'http://www.ics.uci.edu/about/search/search_graduate_all.php', 'http://www.ics.uci.edu/ugrad/degrees/Minors', 'http://www.ics.uci.edu/community/events/competition/', 'http://www.ics.uci.edu/grad/courses/index', 'https://ucirvine-csm.symplicity.com/index.php/pid700104', 'http://www.uci.edu/', 'http://www.ics.uci.edu/about/brenhall/index.php', 'http://www.ics.uci.edu/ugrad/QA_Graduation', 'http://www.ics.uci.edu/ugrad/index', 'http://www.ics.uci.edu/faculty/highlights/', 'http://www.ics.uci.edu/ugrad/degrees/index.php', 'http://www.ics.uci.edu/community/scholarships/index', 'http://www.ics.uci.edu/grad/funding/index', 'http://www.ics.uci.edu/grad/index', 'http://www.ics.uci.edu/ugrad/', 'http://www.ics.uci.edu/grad/degrees/index', 'http://www.ics.uci.edu/about/about_deanmsg.php', 'http://www.ics.uci.edu/ugrad/policies/Laptop_ComputerUse', 'http://www.stat.uci.edu', 'http://www.ics.uci.edu/about/about_factsfigures.php', 'http://www.ics.uci.edu/grad/resources', 'http://www.ics.uci.edu/faculty/area/', 'http://www.ics.uci.edu/about/search/index.php', 'http://www.ics.uci.edu/computing/account/new', 'http://www.ics.uci.edu/ugrad/QA_Petitions', 'http://www.ics.uci.edu/ugrad/sao/index', 'http://www.ics.uci.edu/community/news/press/', 'http://www.ics.uci.edu/ugrad/policies/Academic_Standing', 'http://www.ics.uci.edu/grad/admissions/Prospective_ApplicationProcess.php', 'http://www.uci.edu/copyright.php', 'http://www.ics.uci.edu/ugrad/sao/SAO_Events.php', 'http://www.ics.uci.edu/about/visit/index.php', 'http://www.ics.uci.edu/involved/', 'http://www.ics.uci.edu/about/equity/', 'http://www.ics.uci.edu/', 'http://www.ics.uci.edu/dept/', 'http://www.ics.uci.edu/about/annualreport/', 'http://www.uci.edu/cgi-bin/phonebook', 'http://www.ics.uci.edu/grad/forms/index', 'http://www.cs.uci.edu', 'http://www.ics.uci.edu//', 'http://www.ics.uci.edu/community/news/', 'http://www.ics.uci.edu/ugrad/policies/Course_Outside_UCI', 'http://www.ics.uci.edu/ugrad/resources/index', 'http://www.ics.uci.edu/faculty/', 'http://www.ics.uci.edu/involved/corporate_partner', 'http://www.ics.uci.edu/about/visit/index', 'http://www.ics.uci.edu/grad/policies/index', 'http://www.ics.uci.edu/about/', 'http://www.ics.uci.edu/about/about_contact.php', 'http://www.informatics.uci.edu', 'http://www.ics.uci.edu/ugrad/policies/Academic_Integrity', 'http://www.uadv.uci.edu/DonaldBrenSchoolOfICSAnnualGiving', 'http://www.ics.uci.edu/ugrad/policies/Grade_Options', 'http://www.ics.uci.edu/ugrad/policies/Withdrawal_Readmission', 'http://intranet.ics.uci.edu/', 'http://www.ics.uci.edu/grad/admissions/index', 'http://www.ics.uci.edu/ugrad/courses/index', 'http://www.ics.uci.edu/involved/project_class'])
-#
-# for ele in test:
-#     print is_valid(ele)
+        # print is_valid("http://www.ics.uci.edu/spring-2007/")
+
+        #
+
