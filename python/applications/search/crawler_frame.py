@@ -1,4 +1,5 @@
 import logging
+from collections import defaultdict
 
 import requests
 from datamodel.search.datamodel import ProducedLink, OneUnProcessedGroup, robot_manager
@@ -159,6 +160,9 @@ def is_valid(url):
     This is a great place to filter out crawler traps.
     '''
     # check trap
+    if url == None or url == '':
+        return False
+
     for trap in TRAP_POOL:
         if url.__contains__(trap):
             return False
@@ -176,6 +180,17 @@ def is_valid(url):
 
     if parsed.scheme not in set(["http", "https"]):
         return False
+
+    if path.__contains__("../"):
+        return False
+
+    path_split = str.split('/')
+    map = defaultdict(int)
+    for i in range(len(path_split)):
+        if path_split[i] != None and path_split != '':
+            map[path_split[i]] = map[path_split[i]] + 1
+            if map[path_split[i]] == 3:
+                return False
 
     # only consider 200, and
     # head = requests.head(url)
@@ -208,4 +223,13 @@ def is_valid(url):
         # print is_valid("http://www.ics.uci.edu/spring-2007/")
 
         #
-
+#
+# # str = "/prospective/ko/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/contact/student-affairs/"
+# path_split = str.split('/')
+# map = defaultdict(int)
+# for i in range(len(path_split)):
+#     if path_split[i] != None and path_split != '':
+#         map[path_split[i]] = map[path_split[i]] + 1
+#         if map[path_split[i]] == 3:
+#             print "xxxx"
+#

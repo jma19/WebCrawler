@@ -9,8 +9,10 @@ def extractLinkFromPage(content, scheme, netloc, stack, originURL):
     # temp = list(stack)
     for link in BeautifulSoup(content, "lxml").findAll('a'):
         url = link.get('href')
-        url = urljoin(originURL, url)
-
+        print "----%s" % url
+        if url != None:
+            url = urljoin(originURL, url)
+        print "----%s" % url
         # if url == None or url == '':
         #     continue
         # if url.startswith("http") or url.startswith("https"):
@@ -44,9 +46,11 @@ def getRelPath(url, stack):
     #             except:
     #                 return url, 0
     #     return url, 0
+
     stepBack = (len(url) - len(url.replace('../', ''))) / 3
     newUrl = url.replace('../', '')
     return "/" + newUrl, stepBack
+
 
 def getPathStack(path):
     stack = []
@@ -73,13 +77,12 @@ def getHtml(url):
     return html
 
 
-# url = "http://www.ics.uci.edu/about/about/about"
-# html = getHtml(url)
-# parsed = urlparse(url)
-# page = extractLinkFromPage(html, parsed.scheme, parsed.netloc, getPathStack(parsed.path), url)
-# print page
-#
-urljoin('http://www.cwi.nl/%7Eguido/Python.html', 'FAQ.html')
+url = "http://www.ics.uci.edu/grad/funding/../degrees/../admissions/../funding/../admissions/../funding/../../about/visit/../bren/../bren/../search/../visit/../../grad/../about/visit/visit_fromfreeway.php"
+html = getHtml(url)
+parsed = urlparse(url)
+page = extractLinkFromPage(html, parsed.scheme, parsed.netloc, getPathStack(parsed.path), url)
+print page
+
 
 
 # https://foofish.net/python-crawler-html2pdf.html
